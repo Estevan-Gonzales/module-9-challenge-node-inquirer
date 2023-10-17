@@ -1,22 +1,49 @@
 // TODO: Include packages needed for this application
-
-// TODO: Create an array of questions for user input
-//const questions = [];
-
-// TODO: Create a function to write README file
-//function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-//function init() {}
-
-// Function call to initialize app
-//init();
-
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-let toWrite = "This is a test message. Beep. Boop.";
+// TODO: Create an array of questions for user input
+const messages = [
+    'What is the name of the title?',
+    'What is your name?',
+    'How old are you?',
+    'Where are you from'
+];
 
-fs.writeFile('index.txt', toWrite, (err) =>
-err ? console.log(err) : console.log('Successfully created index.html!')
-);
+const types = ['input', 'input', 'input', 'input'];
+const names = ['title', 'name', 'age', 'location'];
+
+let toAsk = [];
+
+for (let i = 0; i < messages.length; i++) {
+    section = {}
+    section.type = types[i]
+    section.name = names[i]
+    section.message = messages[i];
+    toAsk.push(section);
+}
+
+const generateMarkdown = require('./utils/generateMarkdown');
+
+// TODO: Create a function to write README file
+function writeToFile(fileName, toAsk) {
+    inquirer
+    .prompt(toAsk).then((data) => {
+        console.log(generateMarkdown(data));
+        fs.writeFile(fileName, generateMarkdown((data)), (err) =>
+        err ? console.log(err) : console.log('Successfully created README.md')
+        )});
+}
+
+// TODO: Create a function to initialize app
+function init() {
+    writeToFile('README.md', toAsk);
+}
+
+// Function call to initialize app
+init();
+
+
+
+
+
