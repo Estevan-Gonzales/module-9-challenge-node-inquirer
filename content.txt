@@ -1,0 +1,19 @@
+Description
+
+This application is my solution to the Module 9 Challenge of the Coding Bootcamp. This application allows users to generate a README.md file for their project, saving time and effort for the user. Having a professional README file for your application is very important, as it provides essentail information to users, and clarifies different aspects of the application including installation and usage. 
+
+Installation
+
+Copy the project repo your local machine, and run 'npm i' in the terminal to install all of the necessary packages. Run 'node index.js' to run the program.
+
+Usage
+
+Once run, answer the prompted questions in the terminal. Once completed a file README file will be created. Open this file to view the README file.
+
+Contributions
+
+Github Gist - kofiav/license-badges was referenced for information on how to provide license badges.
+
+Tests
+
+There are no tests associated with this project.

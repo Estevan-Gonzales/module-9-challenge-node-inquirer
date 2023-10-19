@@ -4,32 +4,42 @@ const fs = require('fs');
 
 // TODO: Create an array of questions for user input
 const messages = [
-    'What is the name of the title?',
-    'What is your name?',
-    'How old are you?',
-    'Where are you from'
+    'Please provide a description:',
+    'Please provide installation instructions:',
+    'Please provide usage information:',
+    'Please privide contribution guidelines:',
+    'Please provide test instructions:',
+    'What is your Github username?:',
+    'What is your email address?:',
+    'Please select license type:'
 ];
 
-const types = ['input', 'input', 'input', 'input'];
-const names = ['title', 'name', 'age', 'location'];
+const types = ['input', 'input', 'input', 'input', 'input', 'input', 'input', 'list'];
+const names = ['description', 'installation', 'usage', 'contributions', 'tests', 'github', 'email', 'license'];
 
-let toAsk = [];
+
+let capturedInput = [];
 
 for (let i = 0; i < messages.length; i++) {
-    section = {}
-    section.type = types[i]
-    section.name = names[i]
+    let section = {};
+    section.type = types[i];
+    section.name = names[i];
     section.message = messages[i];
-    toAsk.push(section);
+
+    if (types[i] == 'list') {
+        section.choices = ['MIT', 'No License']
+    }
+
+    capturedInput.push(section);
 }
+
 
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, toAsk) {
+function writeToFile(fileName, capturedInput) {
     inquirer
-    .prompt(toAsk).then((data) => {
-        console.log(generateMarkdown(data));
+    .prompt(capturedInput).then((data) => {
         fs.writeFile(fileName, generateMarkdown((data)), (err) =>
         err ? console.log(err) : console.log('Successfully created README.md')
         )});
@@ -37,7 +47,7 @@ function writeToFile(fileName, toAsk) {
 
 // TODO: Create a function to initialize app
 function init() {
-    writeToFile('README.md', toAsk);
+    writeToFile('README.md', capturedInput);
 }
 
 // Function call to initialize app
