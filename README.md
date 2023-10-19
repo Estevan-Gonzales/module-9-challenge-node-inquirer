@@ -23,3 +23,7 @@ https://mit-license.org/
   Please reach out to me through my Github profile or email with any questions or comments you may have.
   github.com/estevan-gonzales
   egonz94@gmail.com
+
+  LINK TO VIDE WALKTHROUGH:
+  https://drive.google.com/file/d/1VydqP7qQdwegCYwfGe9ESds8wvXD9MUg/view?usp=sharing
+  
